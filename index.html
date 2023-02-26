@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Detector da palavra Penis</title>
+</head>
+
+<body>
+    <nav>
+        <ul class="navbar-nav">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="sugestao.html">Sugestões</a></li>
+        </ul>
+    </nav>
+    <div class="caixa-texto">
+        <form>
+            <textarea placeholder="Digite seu texto aqui..." value="phrase"></textarea>
+            <br>
+            <button type="button" onclick="mostrarAlerta()">Enviar</button>
+
+        </form>
+
+        <div id="meu-alerta" class="escondido">
+            <h2>Este texto tem a palavra "Penis"</h2>
+            <button onclick="fecharAlerta()">Fechar</button>
+        </div>
+        <div id="meu-alerta2" class="escondido">
+            <h2>Este texto não tem a palavra "Penis"</h2>
+            <button onclick="fecharAlertaNegativo()">Fechar</button>
+        </div>
+    </div>
+    <script>
+
+
+
+        function detectPenis(texto) {
+            for (let i = 0; i < texto.length; i++) {
+                if (texto[i] === "p" && texto[i + 1] === "e" &&
+                    texto[i + 2] === "n" && texto[i + 3] === "i" &&
+                    texto[i + 4] === "s") {
+                    return true;
+                }
+                if (texto[i] === "p" && texto[i + 1] === "ê" &&
+                    texto[i + 2] === "n" && texto[i + 3] === "i" &&
+                    texto[i + 4] === "s") {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        function mostrarAlerta() {
+            var phrase = document.querySelector("textarea").value;
+            texto = phrase.toLowerCase();
+            if (detectPenis(texto)) {
+                document.getElementById("meu-alerta").classList.remove("escondido");
+            } else {
+                document.getElementById("meu-alerta2").classList.remove("escondido");
+            }
+        }
+
+        function fecharAlerta() {
+            document.getElementById("meu-alerta").classList.add("escondido");
+        }
+        function fecharAlertaNegativo() {
+            document.getElementById("meu-alerta2").classList.add("escondido");
+        }
+
+    </script>
+</body>
+
+</html>
